@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mochamad Naufal — Personal Portfolio</title>
+
+<!-- SEO & Social Media Share Meta Tags -->
+<meta name="description" content="Portfolio of Mochamad Naufal Miftahusy Syifa — High School Graduate with Banking & F&B Work Experience, Creative & Technical Skills. Explore my projects and profile.">
+<meta property="og:title" content="Mochamad Naufal — Personal Portfolio">
+<meta property="og:description" content="Recent Graduate • Bank BJB & Burger Bangor Experience • Open to Work. Explore my skills and contact me.">
+<meta property="og:image" content="https://imgur.com/9nI1L1G.png">
+<meta property="og:type" content="website">
+
+<!-- Favicon Preview -->
+<link rel="icon" href="https://api.dicebear.com/7.x/avataaars/svg?seed=Naufal" type="image/svg+xml">
+
+<style>
+/* ===============================
+   THEME VARIABLES & BASE
+================================ */
+:root {
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-card: rgba(255, 255, 255, 0.65);
+  --border: rgba(255, 255, 255, 0.7);
+  --text: #0f172a;
+  --text-muted: #475569;
+  
+  /* Red Accent */
+  --accent: #ef4444;
+  --accent-glow: rgba(239, 68, 68, 0.25);
+  
+  --bg1: #fecdd3;
+  --bg2: #fed7aa;
+  --bg3: linear-gradient(135deg, #fff1f2, #fff7ed);
+
+  --badge-bg: rgba(34, 197, 94, 0.15);
+  --badge-color: #15803d;
+}
+
+body.dark {
+  --glass: rgba(15, 23, 42, 0.45);
+  --glass-card: rgba(30, 41, 59, 0.55);
+  --border: rgba(255, 255, 255, 0.12);
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  --accent: #f87171;
+  --accent-glow: rgba(248, 113, 113, 0.3);
+  
+  --bg1: #450a0a;
+  --bg2: #020617;
+  --bg3: linear-gradient(135deg, #0f172a, #1e1b18);
+
+  --badge-bg: rgba(34, 197, 94, 0.2);
+  --badge-color: #4ade80;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 10% 20%, var(--bg1), transparent 50%),
+    radial-gradient(circle at 90% 80%, var(--bg2), transparent 50%),
+    var(--bg3);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text);
+  transition: background 0.8s ease, color 0.5s ease;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+body.dark nav {
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Navigation Links Drawer / Dropdown */
+.nav-links {
+  position: fixed;
+  top: 65px;
+  right: -260px;
+  width: 240px;
+  background: var(--glass-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links.active {
+  right: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0.85;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: #ffffff;
+  background: var(--accent);
+}
+
+/* Dark Mode Switch */
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-switch {
+  width: 48px;
+  height: 26px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.toggle-switch::before {
+  content: "☀️";
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-checkbox:checked + .toggle-switch {
+  background: rgba(30, 41, 59, 0.7);
+}
+
+.toggle-checkbox:checked + .toggle-switch::before {
+  content: "🌙";
+  transform: translateX(21px) rotate(360deg);
+  background: #0f172a;
+}
+
+/* Sections */
+section {
+  padding: 100px 0 60px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+.hero-card {
+  width: 100%;
+  padding: 50px 40px;
+  border-radius: 32px;
+  background: var(--glass);
+  backdrop-filter: blur(30px) saturate(160%);
+  -webkit-backdrop-filter: blur(30px) saturate(160%);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), 0 0 80px var(--accent-glow);
+  text-align: center;
+}
+
+.profile-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--badge-bg);
+  color: var(--badge-color);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 30px;
+  line-height: 1.7;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px var(--accent-glow);
+}
+
+.btn-secondary {
+  background: var(--glass-card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+/* Experience & Education Section */
+.timeline-card {
+  padding: 30px;
+  border-radius: 24px;
+  background: var(--glass-card);
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 25px var(--accent-glow);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.timeline-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.timeline-subtitle {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.timeline-date {
+  font-size: 12px;
+  background: var(--glass);
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.timeline-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Skills Section */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.skill-card {
+  padding: 12px 22px;
+  border-radius: 16px;
+  background: var(--glass-card);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px var(--accent-glow);
+}
+
+/* Projects Section */
+.filter-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: var(--glass-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  border-radius: 24px;
+  background: var(--glass-card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px var(--accent-glow);
+}
+
+.project-img {
+  width: 100%;
+  height: 160px;
+  border-radius: 16px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  background-color: #f1f5f9;
+}
+
+body.dark .project-img {
+  background-color: #1e293b;
+}
+
+.project-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.project-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.project-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.project-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Contact Section */
+.contact-card {
+  padding: 40px;
+  border-radius: 32px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.email-copy-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--glass-card);
+  border: 1px solid var(--border);
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.copy-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.copy-btn:hover {
+  opacity: 0.9;
+}
+
+/* Footer */
+footer {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 200;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 600px) {
+  .hero-card { padding: 30px 20px; }
+  .hero h1 { font-size: 26px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="container nav-container">
+    <a href="#" class="logo">Naufal.</a>
+    
+    <div class="nav-right">
+      <input type="checkbox" id="darkToggle" class="toggle-checkbox">
+      <label for="darkToggle" class="toggle-switch"></label>
+      
+      <!-- Hamburger Menu Button -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Dropdown / Drawer Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+      <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="about" class="hero">
+  <div class="container">
+    <div class="hero-card">
+      <img src="https://imgur.com/9nI1L1G.png" alt="Mochamad Naufal Miftahusy Syifa" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Naufal'">
+      <br>
+      <div class="status-badge">
+        <span class="pulse-dot"></span> Open to Work
+      </div>
+      <h1>Hi, I'm Mochamad Naufal 👋</h1>
+      <p>Dedicated and highly motivated Vocational High School Graduate (SMKS Nurul Hikmah). Experienced in customer service at Burger Bangor and banking data administration during my internship at Bank BJB KCP Jonggol, paired with strong skills in digital editing and web development.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="Naufal cv resume (2).pdf" target="_blank" class="btn btn-secondary">📄 Download CV</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work Experience Section -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Work Experience</h2>
+    <p class="section-subtitle">My professional journey, internships & practical experience</p>
+    
+    <div class="timeline-card">
+      <div class="timeline-header">
+        <div>
+          <h3 class="timeline-title">Data Administration & Processing Intern</h3>
+          <span class="timeline-subtitle">Bank BJB KCP Jonggol</span>
+        </div>
+        <span class="timeline-date">July 2024 – August 2024</span>
+      </div>
+      <p class="timeline-desc">Enhanced skills in the banking sector by managing customer data, processing physical documents into digital computer database systems, maintaining file traceability, and collaborating effectively with team members to achieve target results.</p>
+    </div>
+
+    <div class="timeline-card">
+      <div class="timeline-header">
+        <div>
+          <h3 class="timeline-title">F&B Crew & Service Member</h3>
+          <span class="timeline-subtitle">Burger Bangor</span>
+        </div>
+        <span class="timeline-date">Work Experience</span>
+      </div>
+      <p class="timeline-desc">Developed strong interpersonal and operational skills in the F&B industry, including providing excellent customer service, preparing food orders according to strict SOP guidelines, and maintaining store efficiency.</p>
+    </div>
+
+    <div class="timeline-card">
+      <div class="timeline-header">
+        <div>
+          <h3 class="timeline-title">SMKS Nurul Hikmah</h3>
+          <span class="timeline-subtitle">Vocational High School Graduate</span>
+        </div>
+        <span class="timeline-date">2022 - 2025</span>
+      </div>
+      <p class="timeline-desc">Focused on digital administration, English communication, video/graphic editing, and web development fundamentals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills & Capabilities</h2>
+    <p class="section-subtitle">My technical, administrative, and creative strengths</p>
+    <div class="skills-grid">
+      <div class="skill-card">📊 Data Management & Processing</div>
+      <div class="skill-card">🍔 F&B Service & SOP Compliance</div>
+      <div class="skill-card">📄 Basic Microsoft Office</div>
+      <div class="skill-card">🎨 Canva Designing</div>
+      <div class="skill-card">🎬 Digital Editing</div>
+      <div class="skill-card">🌐 English Communication</div>
+      <div class="skill-card">💻 HTML5, CSS3 & Web Dev</div>
+      <div class="skill-card">🚀 Glassmorphism UI/UX</div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">A collection of my web development & creative design work</p>
+    
+    <div class="filter-btn-group">
+      <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+      <button class="filter-btn" onclick="filterProjects('web')">Web Dev</button>
+      <button class="filter-btn" onclick="filterProjects('design')">Design</button>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" data-category="web">
+        <div>
+          <img src="https://api.microlink.io/?url=https%3A%2F%2Fnaufalms17.github.io%2FN-Speed-Test%2F&screenshot=true&embed=screenshot.url" alt="N Speed Test Real Preview" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60'">
+          <span class="project-tag">Web App</span>
+          <h3 class="project-title">N Speed Test</h3>
+          <p class="project-desc">A Porsche speedometer-inspired internet speed test web application featuring live download/upload indicators, ping metrics, ISP detection, and interactive test simulation.</p>
+        </div>
+        <a href="https://naufalms17.github.io/N-Speed-Test/" target="_blank" class="project-link">View Website →</a>
+      </div>
+
+      <div class="project-card" data-category="web">
+        <div>
+          <img src="https://api.microlink.io/?url=https%3A%2F%2Fnaufalms17.github.io%2FLinktree-Naufalms%2F&screenshot=true&embed=screenshot.url" alt="Personal Linktree Real Preview" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60'">
+          <span class="project-tag">Web App</span>
+          <h3 class="project-title">Personal Linktree Glass</h3>
+          <p class="project-desc">A glassmorphism-style personal link landing page featuring dark mode toggle & auto-copy link sharing.</p>
+        </div>
+        <a href="https://naufalms17.github.io/Linktree-Naufalms/" target="_blank" class="project-link">View Website →</a>
+      </div>
+
+      <div class="project-card" data-category="design">
+        <div>
+          <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=500&auto=format&fit=crop&q=60" alt="Canva Design Preview" class="project-img">
+          <span class="project-tag">Design</span>
+          <h3 class="project-title">Digital Media & Graphic Assets</h3>
+          <p class="project-desc">Creative graphic templates and video editing assets created using Canva and editing software.</p>
+        </div>
+        <a href="#" class="project-link">View Website →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <h2 class="section-title">Let's Connect & Work Together!</h2>
+      <p class="section-subtitle">Located in Jonggol, West Java, Indonesia. Open for job opportunities and collaborations.</p>
+      
+      <div class="contact-info">
+        <div class="email-copy-box">
+          <span>miftahusyiffa@gmail.com</span>
+          <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
+        </div>
+        <p style="font-size: 14px; font-weight: 600; color: var(--text-muted); margin-top: 5px;">📱 Phone: +62 857-1666-2553</p>
+      </div>
+      
+      <a href="mailto:miftahusyiffa@gmail.com" class="btn btn-primary" style="display: inline-block;">Send Direct Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>© 2026 Mochamad Naufal Miftahusy Syifa • All Rights Reserved</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Email copied to clipboard!</div>
+
+<script>
+// Hamburger Toggle Function
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+
+hamburgerBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  hamburgerBtn.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+function closeMenu() {
+  hamburgerBtn.classList.remove('active');
+  navLinks.classList.remove('active');
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburgerBtn.contains(e.target) && !navLinks.contains(e.target)) {
+    closeMenu();
+  }
+});
+
+// Dark Mode Toggle
+const darkToggle = document.getElementById('darkToggle');
+const body = document.body;
+
+const savedTheme = localStorage.getItem('darkMode');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'enabled' || (!savedTheme && prefersDark)) {
+  body.classList.add('dark');
+  darkToggle.checked = true;
+}
+
+darkToggle.addEventListener('change', () => {
+  if (darkToggle.checked) {
+    body.classList.add('dark');
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    body.classList.remove('dark');
+    localStorage.setItem('darkMode', 'disabled');
+  }
+});
+
+// Copy Email Function
+function copyEmail() {
+  const email = 'miftahusyiffa@gmail.com';
+  navigator.clipboard.writeText(email);
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// Filter Projects Function
+function filterProjects(category) {
+  const cards = document.querySelectorAll('.project-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  cards.forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
+</body>
+</html>
